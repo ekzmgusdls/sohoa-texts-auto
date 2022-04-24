@@ -8,7 +8,7 @@ function makeTextRow(selector) {
         const target = thing;
         const s = target.textContent;
         const length = s.length;
-        const maxWidth = 10;
+        const maxWidth = 0.5;
         const minWidth = 0;
         const step = (maxWidth - minWidth) / (length - 1);
         const mappingOgArr = [];
@@ -21,7 +21,7 @@ function makeTextRow(selector) {
             const span = document.createElement('span');
             span.classList.add('individual-text');
             span.textContent = individualText;
-            span.style['-webkit-text-stroke'] = `${maxWidth - step * i}px`;
+            span.style['-webkit-text-stroke'] = `${maxWidth - step * i}vw`;
             mappingOgArr.push(maxWidth - step * i);
             target.append(span);
         }
@@ -38,7 +38,7 @@ function makeTextRow(selector) {
             for (let i = 0; i < length; i++) {
                 target.children[i].style['-webkit-text-stroke'] = `${
                     maxWidth - step * i - ((Math.sin(ts * speed * (1 / 1000)) * mappingArr[i]) / 2 + mappingArr[i] / 2)
-                }px`;
+                }vw`;
                 // target.children[i].style.position = 'relative';
             }
             requestAnimationFrame(callback);
